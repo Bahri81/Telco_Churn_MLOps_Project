@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Python/Proje-Classification/Tamamlanm%C4%B1%C5%9F%20hali-yeni/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: telco_churn_project

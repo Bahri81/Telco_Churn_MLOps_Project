@@ -1,0 +1,9 @@
+Selected Algorithm: Tuned Gradient Boosting Classifier (GBC)
+
+Optimization Strategy: Hyperparameter tuning was performed over 75 iterations targeting the F1-Score to maintain a robust balance between Precision and Recall.
+
+Methodological Decision (Occam's Razor): Although Ensemble Stacking was tested, the meta-model exhibited overfitting on the raw test set (F1 dropped to ~61.75%). Consequently, following the principle of parsimony, Tuned GBC was declared the absolute champion.
+
+Key Business Insights (SHAP Analysis):
+1. Tenure and Contract Type have a significantly higher impact (approx. 6x) on customer churn compared to Monthly Charges.
+2. Fiber Optic service correlation suggests high-tech service infrastructure requires technical/operational optimization to mitigate churn risk.

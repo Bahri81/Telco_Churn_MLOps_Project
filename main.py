@@ -4,7 +4,9 @@ import pandas as pd
 from pycaret.classification import load_model, predict_model
 
 app = FastAPI(title="Telco Churn MLOps API")
-
+@app.get("/")
+def read_root():
+    return {"mesaj": "Telco Churn API operating smoothly"}
 try:
     model = load_model('final_telco_churn_model')
 except Exception as e:

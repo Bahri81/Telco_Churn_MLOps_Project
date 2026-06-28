@@ -48,21 +48,24 @@ I designed the application to be easily deployed on any local machine or server 
 ### Deployment Steps
 
 1. **Clone the Repository:**
-   
 ```bash
-   git clone [https://github.com/Bahri81/Telco_Churn_MLOps_Project.git](https://github.com/Bahri81/Telco_Churn_MLOps_Project.git)
+   git clone https://github.com/Bahri81/Telco_Churn_MLOps_Project.git
    cd Telco_Churn_MLOps_Project
+```
 
+2. **Build and Run with Docker Compose:**
 ```bash
    docker-compose up --build
+```
 
-Access the Application:
+3. **Access the Application:**
+   - **Interactive Streamlit Frontend:** http://localhost:8501
+   - **FastAPI Backend Documentation (Swagger UI):** http://localhost:8000/docs
 
-Interactive Streamlit Frontend: http://localhost:8501
+---
 
-FastAPI Backend Documentation (Swagger UI): http://localhost:8000/docs
+## Conclusion
 
-Conclusion
 Beyond just predicting customer profiles likely to leave, I wanted this project to provide a fully-fledged product that translates predictive analytics into actionable business strategies. It bridges the gap between deep analytical research (SHAP, $217k Budget Simulation) and modern software engineering principles (Git LFS, CI/CD, Containerization).
 
 Thank you for checking it out!

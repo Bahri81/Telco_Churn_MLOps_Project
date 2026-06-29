@@ -1,0 +1,16 @@
+
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+*.log
+
+.env
+.venv
+env/
+venv/
+
+
+final_telco_lr_model.pkl
+final_telco_blended_model.pkl

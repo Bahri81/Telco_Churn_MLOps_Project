@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(
     page_title="Telco Churn Prediction System",
@@ -8,8 +9,8 @@ st.set_page_config(
 
 st.title("Telco Customer Churn Prediction System")
 st.markdown("""
-This interface uses **FastAPI** microservice as background to calculate Customer Churn risk in real-time.
-Please fill in the customer details below and then click the "Predict" button.
+This interface connects to the background **FastAPI** microservice to calculate Customer Churn risk in real-time.
+Please fill in the customer details below and click the "Predict" button.
 """)
 
 col1, col2, col3 = st.columns(3)
@@ -33,7 +34,7 @@ with col2:
     multiple_lines = st.selectbox("Multiple Lines", ["No", "Yes"])
     internet_service = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
     
-    st.markdown("###Additional Services")
+    st.markdown("### Additional Services")
     online_security = st.selectbox("Online Security", ["No", "Yes"])
     online_backup = st.selectbox("Online Backup", ["No", "Yes"])
     device_protection = st.selectbox("Device Protection", ["No", "Yes"])
@@ -55,7 +56,7 @@ with col3:
 
 st.markdown("---")
 
-if st.button("🚀 Predict Customer Risk", use_container_width=True):
+if st.button("Predict Customer Risk", use_container_width=True):
     
     payload = {
         "Gender": gender,
@@ -80,7 +81,7 @@ if st.button("🚀 Predict Customer Risk", use_container_width=True):
         "Streaming Movies": streaming_movies
     }
     
-    API_URL = "http://127.0.0.1:8000/predict"
+    API_URL = os.getenv("API_URL", "http://127.0.0.1:8000/predict")
     
     try:
         with st.spinner("AI Model is calculating, please wait..."):
@@ -90,9 +91,9 @@ if st.button("🚀 Predict Customer Risk", use_container_width=True):
                 result = response.json()
                 
                 st.subheader("Prediction Results")
-                
+                        
                 res_col1, res_col2, res_col3 = st.columns(3)
-                
+                                
                 is_churn = "Churn" in result["prediction"]
                 
                 with res_col1:
@@ -114,4 +115,4 @@ if st.button("🚀 Predict Customer Risk", use_container_width=True):
                 st.write(response.json())
                 
     except requests.exceptions.ConnectionError:
-        st.error("⚠️ ERROR: Cannot connect to backend (FastAPI) server! Please ensure \"main.py\" is running with Uvicorn.")
+        st.error("ERROR: Cannot connect to backend (FastAPI) server! Please ensure \"main.py\" is running with Uvicorn.")

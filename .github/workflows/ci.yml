@@ -1,4 +1,4 @@
-nname: MLOps CI Pipeline
+name: MLOps CI Pipeline
 
 on:
   push:

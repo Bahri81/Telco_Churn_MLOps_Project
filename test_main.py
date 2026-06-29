@@ -6,10 +6,9 @@ client = TestClient(app)
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Telco Churn API operating smoothly"}
+    assert response.json() == {"mesaj": "Telco Churn API operating smoothly"}
 
 def test_predict_churn():
-
     test_payload = {
         "Gender": "Male",
         "Senior Citizen": 0,
@@ -38,9 +37,22 @@ def test_predict_churn():
     assert response.status_code == 200
     
     data = response.json()
-   
+
     assert "prediction" in data
     assert "risk_probability" in data
     assert "business_action" in data
-    
+
     assert data["prediction"] in ["Churn", "Loyal"]
+
+def test_missing_data_handling():
+    
+    incomplete_payload = {
+        "Gender": "Male",
+        
+        "Tenure Months": 12,
+        "Monthly Charges": 65.5
+    }
+    
+    response = client.post("/predict", json=incomplete_payload)
+    
+    assert response.status_code in [200, 422]

@@ -5,7 +5,6 @@ from pycaret.classification import load_model, predict_model
 
 app = FastAPI(title="Telco Churn MLOps API")
 
-# Modeli yükle
 model = load_model('final_telco_churn_model')
 
 def create_tenure_cohort(tenure):
@@ -13,6 +12,16 @@ def create_tenure_cohort(tenure):
     elif tenure <= 24: return "Standard (1-2 year)"
     elif tenure <= 48: return "Loyal (2-4 year)"
     else: return "Good_Cust (4+ year)"
+
+MAPPING_DICT = {
+    "Female": 0, "Male": 1,
+    "No": 0, "Yes": 1,
+    "No internet service": 2, "No phone service": 2,
+    "DSL": 0, "Fiber optic": 1,
+    "Month-to-month": 0, "One year": 1, "Two year": 2,
+    "Electronic check": 0, "Mailed check": 1, 
+    "Bank transfer (automatic)": 2, "Credit card (automatic)": 3
+}
 
 @app.get("/")
 def read_root():
@@ -23,8 +32,11 @@ def predict_churn(data: Dict[str, Any]):
    
     df_input = pd.DataFrame([data])
     
+
     if 'Tenure Months' in df_input.columns:
         df_input['Tenure_Cohort'] = df_input['Tenure Months'].apply(create_tenure_cohort)
+    
+    df_input = df_input.replace(MAPPING_DICT)
     
     predictions = predict_model(model, data=df_input)
     

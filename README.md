@@ -55,13 +55,13 @@ Deployment Steps
 
 Clone the Repository:
 
-   git clone [https://github.com/Bahri81/Telco_Churn_MLOps_Project.git](https://github.com/Bahri81/Telco_Churn_MLOps_Project.git)
-   cd Telco_Churn_MLOps_Project
+git clone [https://github.com/Bahri81/Telco_Churn_MLOps_Project.git](https://github.com/Bahri81/Telco_Churn_MLOps_Project.git)
+cd Telco_Churn_MLOps_Project
 
 
 Build and Run with Docker Compose:
 
-   docker-compose up --build
+docker-compose up --build
 
 
 Access the Application:

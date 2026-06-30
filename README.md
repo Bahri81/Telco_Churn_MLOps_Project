@@ -8,10 +8,10 @@ During development, I loved putting on two different hats: The Data Scientist an
 
 To maintain strict methodological honesty and prevent data leakage, I carefully locked all preprocessing pipelines within the training cross-validation loops.
 
-Experimentation & Realistic Financial Simulation ($34k Net Profit)
+Experimentation & Realistic Financial Simulation ($170k+ Projected Annual Profit)
 
 I evaluated multiple classifiers and utilized PyCaret's optimization frameworks. Instead of stopping at standard metrics like F1-Score, I translated the model's performance into a real-world Financial Simulation.
-By calculating the promotion costs (for false alarms) versus the revenue saved from correctly persuaded customers (assuming a realistic 20% campaign conversion rate), this model is projected to return a net profit of $34,104 USD to the company on the test cohort.
+By calculating the promotion costs (for false alarms) versus the revenue saved from correctly persuaded customers (assuming a realistic 20% campaign conversion rate and dynamically utilizing each customer's actual Monthly Charges rather than a flat average), this model yields a net profit of ~$34,000 USD on the 20% test cohort alone. When scaled to the entire customer base (7,000+ customers), the projected annual business impact exceeds $170,000 USD.
 
 Probability Threshold Optimization
 
@@ -37,7 +37,7 @@ Containerization: I packaged the complete pipeline into an isolated Docker conta
 
 Large File Management: To prevent repository bloat, I tracked and managed large model (.pkl) files using Git LFS.
 
-Continuous Integration (CI/CD): I integrated automated unit tests via GitHub Actions to ensure system integrity with every new code commit.
+Continuous Integration (CI/CD): I integrated automated unit tests via GitHub Actions to ensure system integrity with every new code commit. Behavioral testing was implemented to prevent Training-Serving Skew.
 
 Model Registry (Versioning): I utilized the GitHub Releases feature (v1.0.0) as a practical Model Registry to host and track the finalized, production-ready model assets.
 
@@ -72,6 +72,6 @@ FastAPI Backend Documentation (Swagger UI): http://localhost:8000/docs
 
 Conclusion
 
-Beyond just predicting customer profiles likely to leave, I wanted this project to provide a fully-fledged product that translates predictive analytics into actionable business strategies. It bridges the gap between deep analytical research (SHAP, $34k Budget Simulation) and modern software engineering principles (Git LFS, CI/CD, Containerization).
+Beyond just predicting customer profiles likely to leave, I wanted this project to provide a fully-fledged product that translates predictive analytics into actionable business strategies. It bridges the gap between deep analytical research (SHAP, $170k+ Budget Simulation) and modern software engineering principles (Git LFS, CI/CD, Containerization).
 
 Thank you for checking it out!
